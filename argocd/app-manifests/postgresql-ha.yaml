@@ -9,7 +9,6 @@ spec:
     repoURL: 'https://charts.bitnami.com/bitnami'
     chart: postgresql-ha
     targetRevision: 14.0.2
-    path: database/postgresql-ha
     helm:
       valueFiles:
         - https://raw.githubusercontent.com/lizseo/k8s-gitops-practice/main/database/postgresql-ha/values.yaml
