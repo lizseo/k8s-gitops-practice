@@ -6,8 +6,9 @@ metadata:
 spec:
   project: default
   source:
-    repoURL: 'https://github.com/lizseo/k8s-gitops-practice.git'
-    targetRevision: HEAD
+    repoURL: 'https://charts.bitnami.com/bitnami'
+    chart: postgresql-ha
+    targetRevision: 14.0.2
     path: database/postgresql-ha
     helm:
       valueFiles:
