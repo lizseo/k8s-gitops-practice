@@ -49,3 +49,8 @@ volumePermissions:
     tag: 11-debian-11-r76
     pullPolicy: IfNotPresent
     pullSecrets: []
+
+serviceAccount:
+  create: true
+  name: ""
+
