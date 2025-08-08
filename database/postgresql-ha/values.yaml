@@ -1,3 +1,7 @@
+global:
+  compatibility:
+    enabled: true
+
 postgresql:
   replicaCount: 2
   resources:
@@ -13,6 +17,8 @@ postgresql:
     type: ""
     key: ""
     values: []
+  podSecurityContext:
+    enabled: true      
 
 persistence:
   enabled: true
