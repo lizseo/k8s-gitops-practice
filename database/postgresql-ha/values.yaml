@@ -14,6 +14,7 @@ persistence:
 
 pgpool:
   replicaCount: 2
+  adminPassword: 2EpE73CaIx
 
 repmgr:
   password: kCtdCLmWs6
