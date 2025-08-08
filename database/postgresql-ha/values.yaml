@@ -7,6 +7,9 @@ postgresql:
     limits:
       cpu: 500m
       memory: 512Mi
+  image:
+   pullSecrets: []
+
 
 persistence:
   enabled: true
@@ -21,9 +24,11 @@ repmgr:
 
 witness:
   create: false
-
+  
 metrics:
   enabled: false
+  image:
+    pullSecrets: []
 
 volumePermissions:
   enabled: false
