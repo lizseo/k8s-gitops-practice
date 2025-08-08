@@ -2,6 +2,9 @@ global:
   compatibility:
     enabled: true
 
+diagnosticMode:
+  enabled: false
+
 postgresql:
   replicaCount: 2
   resources:
