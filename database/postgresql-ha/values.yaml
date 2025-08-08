@@ -19,6 +19,8 @@ postgresql:
     values: []
   podSecurityContext:
     enabled: true      
+  tls:
+    enabled: false
 
 persistence:
   enabled: true
