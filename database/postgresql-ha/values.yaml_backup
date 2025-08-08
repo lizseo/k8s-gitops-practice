@@ -1,0 +1,65 @@
+global:
+  compatibility:
+    enabled: true
+
+diagnosticMode:
+  enabled: false
+
+postgresql:
+  replicaCount: 2
+  resources:
+    requests:
+      cpu: 250m
+      memory: 256Mi
+    limits:
+      cpu: 500m
+      memory: 512Mi
+  image:
+   pullSecrets: []
+  nodeAffinityPreset:
+    type: ""
+    key: ""
+    values: []
+  podSecurityContext:
+    enabled: true      
+  tls:
+    enabled: false
+  containerSecurityContext:
+    enabled: false
+  audit:
+    logHostname: false
+
+persistence:
+  enabled: true
+  size: 8Gi
+
+pgpool:
+  replicaCount: 2
+  adminPassword: 2EpE73CaIx
+  image:
+    pullSecrets: []
+
+repmgr:
+  password: kCtdCLmWs6
+
+witness:
+  create: false
+  
+metrics:
+  enabled: false
+  image:
+    pullSecrets: []
+
+volumePermissions:
+  enabled: false
+  image:
+    registry: docker.io
+    repository: bitnami/bitnami-shell
+    tag: 11-debian-11-r76
+    pullPolicy: IfNotPresent
+    pullSecrets: []
+
+serviceAccount:
+  create: true
+  name: ""
+
