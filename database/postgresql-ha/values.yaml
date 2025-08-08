@@ -20,4 +20,4 @@ repmgr:
   password: kCtdCLmWs6
 
 witness:
-  enabled: false
+  create: false
