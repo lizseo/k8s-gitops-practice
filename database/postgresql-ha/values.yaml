@@ -21,6 +21,8 @@ postgresql:
     enabled: true      
   tls:
     enabled: false
+  containerSecurityContext:
+    enabled: false
 
 persistence:
   enabled: true
