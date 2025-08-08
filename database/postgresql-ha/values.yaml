@@ -18,6 +18,8 @@ persistence:
 pgpool:
   replicaCount: 2
   adminPassword: 2EpE73CaIx
+  image:
+    pullSecrets: []
 
 repmgr:
   password: kCtdCLmWs6
