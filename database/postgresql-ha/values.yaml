@@ -26,6 +26,8 @@ postgresql:
     enabled: false
   containerSecurityContext:
     enabled: false
+  audit:
+    logHostname: false
 
 persistence:
   enabled: true
