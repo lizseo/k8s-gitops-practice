@@ -15,3 +15,5 @@ persistence:
 pgpool:
   replicaCount: 2
 
+repmgr:
+  password: kCtdCLmWs6
