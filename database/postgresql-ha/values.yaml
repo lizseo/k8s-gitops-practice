@@ -21,3 +21,7 @@ repmgr:
 
 witness:
   create: false
+
+metrics:
+  enabled: false
+
