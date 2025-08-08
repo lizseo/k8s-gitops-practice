@@ -6,12 +6,9 @@ metadata:
 spec:
   project: default
   source:
-    repoURL: 'https://charts.bitnami.com/bitnami'
-    chart: postgresql-ha
-    targetRevision: 14.0.2
-    helm:
-      valueFiles:
-        - https://raw.githubusercontent.com/lizseo/k8s-gitops-practice/main/database/postgresql-ha/values.yaml
+    repoURL: 'https://github.com/lizseo/k8s-gitops-practice.git'
+    targetRevision: main
+    path: database/postgresql-ha
   destination:
     server: 'https://kubernetes.default.svc'
     namespace: database
