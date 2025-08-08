@@ -9,7 +9,10 @@ postgresql:
       memory: 512Mi
   image:
    pullSecrets: []
-
+  nodeAffinityPreset:
+    type: ""
+    key: ""
+    values: []
 
 persistence:
   enabled: true
