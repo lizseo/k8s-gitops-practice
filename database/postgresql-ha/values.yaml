@@ -1213,10 +1213,9 @@ pgpool:
   ##  - name: BEARER_AUTH
   ##    value: true
   ##
-  extraEnvVars: []
+  extraEnvVars: 
     - name: PGPOOL_BACKEND_NODES
       value: "0:postgresql-ha-postgresql-0.postgresql-ha-postgresql-headless:5432,1:postgresql-ha-postgresql-1.postgresql-ha-postgresql-headless:5432,2:postgresql-ha-postgresql-2.postgresql-ha-postgresql-headless:5432"
-#
     ## @param pgpool.extraEnvVarsCM ConfigMap with extra environment variables
   ##
   extraEnvVarsCM: ""
