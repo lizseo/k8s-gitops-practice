@@ -296,7 +296,13 @@ postgresql:
   ##  - name: PG_EXPORTER_DISABLE_DEFAULT_METRICS
   ##    value: "true"
   ##
-  extraEnvVars: []
+  extraEnvVars: 
+    - name: REPMGR_CONNECT_TIMEOUT
+      value: "10"
+    - name: REPMGR_RECONNECT_ATTEMPTS
+      value: "10"
+    - name: REPMGR_RECONNECT_INTERVAL
+      value: "5"
   ## @param postgresql.extraEnvVarsCM ConfigMap with extra environment variables
   ##
   extraEnvVarsCM: ""
@@ -1216,7 +1222,9 @@ pgpool:
   extraEnvVars: 
     - name: PGPOOL_BACKEND_NODES
       value: "0:postgresql-ha-postgresql-0.postgresql-ha-postgresql-headless:5432,1:postgresql-ha-postgresql-1.postgresql-ha-postgresql-headless:5432,2:postgresql-ha-postgresql-2.postgresql-ha-postgresql-headless:5432"
-    ## @param pgpool.extraEnvVarsCM ConfigMap with extra environment variables
+    - name: PGPOOL_HEALTH_CHECK_PSQL_TIMEOUT
+      value: "10"
+        ## @param pgpool.extraEnvVarsCM ConfigMap with extra environment variables
   ##
   extraEnvVarsCM: ""
   ## @param pgpool.extraEnvVarsSecret Secret with extra environment variables
