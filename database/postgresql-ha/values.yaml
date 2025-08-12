@@ -1131,6 +1131,9 @@ witness:
 ## Pgpool-II parameters
 ##
 pgpool:
+  healthCheck:
+    psql:
+      timeout: 10
   ## Bitnami Pgpool-II image
   ## ref: https://hub.docker.com/r/bitnami/pgpool/tags/
   ## @param pgpool.image.registry [default: REGISTRY_NAME] Pgpool-II image registry
@@ -1222,8 +1225,6 @@ pgpool:
   extraEnvVars: 
     - name: PGPOOL_BACKEND_NODES
       value: "0:postgresql-ha-postgresql-0.postgresql-ha-postgresql-headless:5432,1:postgresql-ha-postgresql-1.postgresql-ha-postgresql-headless:5432,2:postgresql-ha-postgresql-2.postgresql-ha-postgresql-headless:5432"
-    - name: PGPOOL_HEALTH_CHECK_PSQL_TIMEOUT
-      value: "10"
         ## @param pgpool.extraEnvVarsCM ConfigMap with extra environment variables
   ##
   extraEnvVarsCM: ""
