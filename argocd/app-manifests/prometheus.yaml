@@ -5,18 +5,26 @@ metadata:
   namespace: argocd
 spec:
   project: default
-  source:
-    repoURL: 'https://github.com/lizseo/k8s-gitops-practice.git'
-    targetRevision: HEAD
-    path: monitoring/prometheus
-    helm:
-      valueFiles:
-        - values.yaml
   destination:
-    server: 'https://kubernetes.default.svc'
+    server: https://kubernetes.default.svc
     namespace: monitoring
+  sources:
+    - repoURL: https://github.com/lizseo/k8s-gitops-practice.git
+      targetRevision: main
+      path: monitoring/prometheus
+      ref: values
+    - repoURL: https://prometheus-community.github.io/helm-charts
+      chart: prometheus
+      # 재현성을 원하면 정확 버전 명시 (예: "25.28.0"). 모르면 생략 가능.
+      # targetRevision: "<CHART_VERSION>"
+      helm:
+        releaseName: prometheus
+        valueFiles:
+          - $values/values.yaml
   syncPolicy:
     automated:
       prune: true
       selfHeal: true
+    syncOptions:
+      - CreateNamespace=true
 

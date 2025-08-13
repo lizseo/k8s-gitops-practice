@@ -1,13 +1,24 @@
-grafana:
+alertmanager:
+  enabled: true
+  persistentVolume:
+    enabled: false
+
+pushgateway:
   enabled: false
 
-prometheus:
-  prometheusSpec:
-    serviceMonitorSelectorNilUsesHelmValues: false
+kubeStateMetrics:
+  enabled: true
 
-defaultRules:
-  create: true
+nodeExporter:
+  enabled: true
 
-alertmanager:
-  enabled: false   # for test
+server:
+  retention: 7d
+  # Prometheus Server 서비스 타입은 내부 통신이면 ClusterIP로 충분
+  service:
+    type: ClusterIP
+  persistentVolume:
+    enabled: true
+    size: 20Gi
+    storageClass: local-path
 

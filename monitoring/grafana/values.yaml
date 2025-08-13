@@ -1,9 +1,38 @@
-adminPassword: "admin123"
-persistence:
-  enabled: true
-  size: 2Gi
+adminUser: admin
+adminPassword: "admin123!"
 
 service:
   type: NodePort
-  nodePort: 32000
+  nodePort: 30030
+
+persistence:
+  enabled: true
+  size: 2Gi
+  storageClassName: local-path
+
+# Grafana가 Prometheus를 자동 인식하도록 데이터소스 등록
+datasources:
+  datasources.yaml:
+    apiVersion: 1
+    datasources:
+      - name: Prometheus
+        type: prometheus
+        access: proxy
+        # Prometheus chart의 releaseName을 "prometheus"로 고정할 것이므로,
+        # 서비스 DNS를 이렇게 지정하면 고정적으로 맞아떨어진다.
+        url: http://prometheus-server.monitoring.svc.cluster.local
+        isDefault: true
+
+# 인기 대시보드 자동 추가 (Node Exporter Full)
+# (추가로 원하면 더 넣자. ID/revision은 Grafana.com에서 확인 가능)
+sidecar:
+  dashboards:
+    enabled: true
+
+dashboards:
+  default:
+    node-exporter-full:
+      gnetId: 1860
+      revision: 32
+      datasource: Prometheus
 
