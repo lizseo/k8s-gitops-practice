@@ -3,7 +3,7 @@ adminPassword: "admin123!"
 
 service:
   type: NodePort
-  nodePort: 30030
+  nodePort: 32000
 
 persistence:
   enabled: true
