@@ -15,11 +15,11 @@ spec:
       ref: values
     - repoURL: https://grafana.github.io/helm-charts
       chart: grafana
-      targetRevision: 9.3.2
+      targetRevision: "9.3.2"
       helm:
         releaseName: grafana
         valueFiles:
-          - $values/values.yaml
+          - "$values/values.yaml"
   syncPolicy:
     automated:
       prune: true
