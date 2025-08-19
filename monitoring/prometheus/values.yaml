@@ -14,7 +14,6 @@ nodeExporter:
 
 server:
   retention: 7d
-  # Prometheus Server 서비스 타입은 내부 통신이면 ClusterIP로 충분
   service:
     type: ClusterIP
   persistentVolume:
