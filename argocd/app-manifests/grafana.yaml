@@ -12,7 +12,7 @@ spec:
     - repoURL: https://github.com/lizseo/k8s-gitops-practice.git
       targetRevision: main
       path: monitoring/grafana
-      ref: values
+      ref: "values"
     - repoURL: https://grafana.github.io/helm-charts
       chart: grafana
       targetRevision: "9.3.2"
