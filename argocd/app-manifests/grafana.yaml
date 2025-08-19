@@ -19,7 +19,7 @@ spec:
       helm:
         releaseName: grafana
         valueFiles:
-          - $values/values.yaml
+          - $values/monitoring/grafana/values.yaml
   syncPolicy:
     automated:
       prune: true
