@@ -15,8 +15,6 @@ spec:
       ref: values
     - repoURL: https://grafana.github.io/helm-charts
       chart: grafana
-      # 재현성 위해 차트 버전 명시 권장 (예: "8.6.0")
-      # targetRevision: "<CHART_VERSION>"
       helm:
         releaseName: grafana
         valueFiles:
