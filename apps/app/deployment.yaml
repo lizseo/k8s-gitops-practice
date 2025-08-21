@@ -2,20 +2,40 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: app
-  namespace: monitoring
+  namespace: default
+  labels: { app: app }
 spec:
   replicas: 4
   selector:
-    matchLabels:
-      app: app
+    matchLabels: { app: app }
   template:
     metadata:
-      labels:
-        app: app
+      labels: { app: app }
     spec:
+      topologySpreadConstraints:
+        - maxSkew: 1
+          topologyKey: kubernetes.io/hostname
+          whenUnsatisfiable: ScheduleAnyway
+          labelSelector:
+            matchLabels: { app: app }
       containers:
-      - name: app
-        image: nginx
-        ports:
-        - containerPort: 80
+        - name: app
+          image: ghcr.io/nginxinc/nginx-unprivileged:stable
+          ports:
+            - containerPort: 8080
+          resources:
+            requests:
+              cpu: "200m"
+              memory: "256Mi"
+            limits:
+              cpu: "500m"
+              memory: "512Mi"
+          readinessProbe:
+            httpGet: { path: "/", port: 8080 }
+            initialDelaySeconds: 5
+            periodSeconds: 10
+          livenessProbe:
+            httpGet: { path: "/", port: 8080 }
+            initialDelaySeconds: 15
+            periodSeconds: 10
 
