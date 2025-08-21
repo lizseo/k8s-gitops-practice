@@ -7,8 +7,13 @@ spec:
   project: default
   source:
     repoURL: 'https://github.com/lizseo/k8s-gitops-practice.git'
-    targetRevision: main
+    targetRevision: HEAD
     path: database/postgresql-ha
+    helm:
+      chart: postgresql-ha
+      repoURL: https://charts.bitnami.com/bitnami
+      valueFiles:
+        - values.yaml  
   destination:
     server: 'https://kubernetes.default.svc'
     namespace: database

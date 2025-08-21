@@ -1,7 +1,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: prometheus
+  name: monitoring
   namespace: argocd
 spec:
   project: default
@@ -10,8 +10,11 @@ spec:
     targetRevision: HEAD
     path: monitoring/prometheus
     helm:
+      chart: kube-prometheus-stack
+      repoURL: https://prometheus-community.github.io/helm-charts
       valueFiles:
-        - values.yaml
+        - values.yaml        # Prometheus
+        - ../grafana/values.yaml  # Grafana
   destination:
     server: 'https://kubernetes.default.svc'
     namespace: monitoring
@@ -19,7 +22,4 @@ spec:
     automated:
       prune: true
       selfHeal: true
-    syncOptions:
-      - CreateNamespace=true
-      - ServerSideApply=true
 
