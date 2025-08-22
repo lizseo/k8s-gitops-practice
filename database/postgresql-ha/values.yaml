@@ -1,0 +1,26 @@
+global:
+  storageClass: "local-path" 
+postgresql:
+  persistence:
+    enabled: true
+    size: 10Gi
+  resources:
+    requests:
+      cpu: 200m
+      memory: 512Mi
+    limits:
+      cpu: 1
+      memory: 1Gi
+  podAntiAffinityPreset: hard
+pgpool:
+  replicaCount: 2
+  resources:
+    requests:
+      cpu: 100m
+      memory: 256Mi
+    limits:
+      cpu: 500m
+      memory: 512Mi
+service:
+  type: ClusterIP
+
