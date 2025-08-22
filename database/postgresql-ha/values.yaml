@@ -3,7 +3,8 @@ global:
 postgresql:
   persistence:
     enabled: true
-    size: 10Gi
+    storageClass: "local-path"  
+    size: 2Gi
   resources:
     requests:
       cpu: 200m
@@ -11,7 +12,7 @@ postgresql:
     limits:
       cpu: 1
       memory: 1Gi
-  podAntiAffinityPreset: hard
+  podAntiAffinityPreset: soft
 pgpool:
   replicaCount: 2
   resources:
