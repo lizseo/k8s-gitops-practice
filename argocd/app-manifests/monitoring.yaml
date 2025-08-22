@@ -1,22 +1,26 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: monitoring
+  name: prometheus
   namespace: argocd
 spec:
   project: default
   source:
-    repoURL: 'https://github.com/lizseo/k8s-gitops-practice.git'
-    targetRevision: HEAD
-    path: monitoring/prometheus
+    repoURL: https://prometheus-community.github.io/helm-charts 
+    chart: kube-prometheus-stack                               
+    targetRevision: 76.4.1                                     
     helm:
-      chart: kube-prometheus-stack
-      repoURL: https://prometheus-community.github.io/helm-charts
-      valueFiles:
-        - values.yaml        # Prometheus
-        - ../grafana/values.yaml  # Grafana
+      releaseName: prometheus
+      values: |                                                
+        grafana:
+          enabled: true 
+        alertmanager:
+          enabled: true
+        prometheus:
+          prometheusSpec:
+            serviceMonitorSelectorNilUsesHelmValues: false
   destination:
-    server: 'https://kubernetes.default.svc'
+    server: https://kubernetes.default.svc
     namespace: monitoring
   syncPolicy:
     automated:
