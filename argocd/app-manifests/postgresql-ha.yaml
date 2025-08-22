@@ -5,17 +5,18 @@ metadata:
   namespace: argocd
 spec:
   project: default
-  source:
-    repoURL: 'https://github.com/lizseo/k8s-gitops-practice.git'
-    targetRevision: HEAD
-    path: database/postgresql-ha
-    helm:
+  sources:
+    - repoURL: https://charts.bitnami.com/bitnami
       chart: postgresql-ha
-      repoURL: https://charts.bitnami.com/bitnami
-      valueFiles:
-        - values.yaml  
+      targetRevision: 14.1.7 
+      helm:
+        valueFiles:
+          - $values/database/postgresql-ha/values.yaml 
+    - repoURL: https://github.com/lizseo/k8s-gitops-practice.git
+      targetRevision: HEAD
+      ref: values
   destination:
-    server: 'https://kubernetes.default.svc'
+    server: https://kubernetes.default.svc
     namespace: database
   syncPolicy:
     automated:
