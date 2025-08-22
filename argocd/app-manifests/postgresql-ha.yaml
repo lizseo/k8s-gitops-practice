@@ -8,7 +8,7 @@ spec:
   sources:
     - repoURL: https://charts.bitnami.com/bitnami
       chart: postgresql-ha
-      targetRevision: 14.1.7 
+      targetRevision: 16.3.1 
       helm:
         valueFiles:
           - $values/database/postgresql-ha/values.yaml 
