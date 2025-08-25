@@ -23,6 +23,7 @@ prometheus:
   enabled: true
   prometheusSpec:
     scrapeInterval: 1m
+    evaluationInterval: 1m
     retention: 3d
     podMonitorSelectorNilUsesHelmValues: false
     serviceMonitorSelectorNilUsesHelmValues: false
