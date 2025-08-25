@@ -20,6 +20,7 @@ grafana:
 
 # Prometheus
 prometheus:
+  enabled: true
   prometheusSpec:
     retention: 15d
     podMonitorSelectorNilUsesHelmValues: false
