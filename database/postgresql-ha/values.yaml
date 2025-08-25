@@ -1,6 +1,8 @@
 global:
   storageClass: "local-path" 
 postgresql:
+  replicaCount: 2
+  existingSecret: postgresql-ha-credentials
   persistence:
     enabled: true
     storageClass: "local-path"  
@@ -15,6 +17,9 @@ postgresql:
   podAntiAffinityPreset: soft
 pgpool:
   replicaCount: 2
+  existingSecret: postgresql-ha-credentials
+  srCheck:
+    username: sr_check_user
   resources:
     requests:
       cpu: 100m
