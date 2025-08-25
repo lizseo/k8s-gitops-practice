@@ -1,0 +1,55 @@
+# Grafana
+grafana:
+  enabled: true
+  adminUser: admin
+  adminPassword: shw1212Z^^
+  service:
+    type: NodePort
+    nodePort: 32000
+  persistence:
+    enabled: true
+    storageClassName: local-path
+    size: 5Gi
+    accessModes: ["ReadWriteOnce"]
+  defaultDashboardsEnabled: true
+  sidecar:
+    dashboards:
+      enabled: true
+    datasources:
+      enabled: true
+
+# Prometheus
+prometheus:
+  prometheusSpec:
+    retention: 15d
+    podMonitorSelectorNilUsesHelmValues: false
+    serviceMonitorSelectorNilUsesHelmValues: false
+    storageSpec:
+      volumeClaimTemplate:
+        spec:
+          storageClassName: local-path
+          accessModes: ["ReadWriteOnce"]
+          resources:
+            requests:
+              storage: 10Gi
+
+alertmanager:
+  alertmanagerSpec:
+    storage:
+      volumeClaimTemplate:
+        spec:
+          storageClassName: local-path
+          accessModes: ["ReadWriteOnce"]
+          resources:
+            requests:
+              storage: 2Gi
+
+prometheus-node-exporter:
+  tolerations:
+    - key: "node-role.kubernetes.io/control-plane"
+      operator: "Exists"
+      effect: "NoSchedule"
+
+kube-state-metrics:
+  enabled: true
+
