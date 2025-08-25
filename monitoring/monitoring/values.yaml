@@ -22,7 +22,7 @@ grafana:
 prometheus:
   enabled: true
   prometheusSpec:
-    scrapeInterval: 30s
+    scrapeInterval: 1m
     retention: 3d
     podMonitorSelectorNilUsesHelmValues: false
     serviceMonitorSelectorNilUsesHelmValues: false
