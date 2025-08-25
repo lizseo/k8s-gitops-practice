@@ -13,7 +13,7 @@ spec:
       targetRevision: 76.4.1                                     
       helm:
         releaseName: monitoring
-        skipCrds: false
+        skipCrds: true
         valueFiles:
           - $values/monitoring/monitoring/values.yaml
     - repoURL: https://github.com/lizseo/k8s-gitops-practice.git
