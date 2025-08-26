@@ -20,6 +20,9 @@ grafana:
 
   initChownData:
     enabled: false
+    runAsUser: 0
+    runAsGroup: 0
+    fsGroup: 472  
 
 # Prometheus
 prometheus:
