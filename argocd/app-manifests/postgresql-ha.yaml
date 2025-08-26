@@ -14,7 +14,7 @@ spec:
           - $values/database/postgresql-ha/values.yaml 
     - repoURL: https://github.com/lizseo/k8s-gitops-practice.git
       targetRevision: HEAD
-      ref: values
+      path: database/postgresql-ha
   destination:
     server: https://kubernetes.default.svc
     namespace: database
