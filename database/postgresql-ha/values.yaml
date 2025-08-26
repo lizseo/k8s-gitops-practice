@@ -18,6 +18,7 @@ postgresql:
 pgpool:
   replicaCount: 2
   existingSecret: postgresql-ha-credentials
+  adminUsername: admin
   srCheck:
     username: sr_check_user
   resources:
