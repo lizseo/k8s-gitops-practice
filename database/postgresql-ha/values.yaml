@@ -3,6 +3,8 @@ global:
 postgresql:
   replicaCount: 2
   existingSecret: postgresql-ha-credentials
+  repmgrUsername: repmgr
+  repmgrPassword: repmgr123
   persistence:
     enabled: true
     storageClass: "local-path"  
