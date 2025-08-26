@@ -19,7 +19,7 @@ grafana:
       enabled: true
 
   initChownData:
-    enabled: false
+    enabled: true
     runAsUser: 0
     runAsGroup: 0
     fsGroup: 472  
