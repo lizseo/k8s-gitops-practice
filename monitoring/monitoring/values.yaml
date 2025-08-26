@@ -18,6 +18,9 @@ grafana:
     datasources:
       enabled: true
 
+  initChownData:
+    enabled: false
+
 # Prometheus
 prometheus:
   enabled: true
